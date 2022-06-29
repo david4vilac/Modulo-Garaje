@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+
+
+
+        <!--DEFINICIÓN DE MENÚS-->
+        <!-- Top menu item -->
+        <menuitem id="garaje" name="garaje.menu_root"/>
+        
+        <!-- menu categories -->
+        <menuitem name="Aparcamientos" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.action_window"/>
+        <menuitem name="Coches" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.action_window"/>
+        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent = "garaje.menu_root" action = "garaje.action_window"/>
+    </data
+</odoo>
