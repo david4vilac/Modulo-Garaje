@@ -1,5 +1,3 @@
-from email.policy import default
-from typing_extensions import Required
 from odoo import models, fields, api
 
 class Aparcamiento(models.Model):
@@ -8,6 +6,12 @@ class Aparcamiento(models.Model):
 
     name = fields.Char(string = 'Dirección', required = True)
     plaza = fields.Integer(string = 'Plazas', requiered = True)
+
+    #relacion entre tablas
+    coche_ids = fields.One2many(
+        'garaje.coche', 
+        'aparcamiento_id', 
+        string = 'Lista Coches')
 
 
 class Coche(models.Model):
@@ -26,7 +30,6 @@ class Coche(models.Model):
         string = 'Fecha de construcción' )
     consumo = fields.Float(
         string = 'Consumo', 
-        (4, 1), 
         default = 0.0,
         help = 'Consumo promedio cada 100kms')
     averiado = fields.Boolean(string = '')
@@ -35,10 +38,17 @@ class Coche(models.Model):
         compute  = '_get_annos')
     description = fields.Text(
         string = 'Descripción')
-    """aparcamiento_id = fields.(
-        string = '')
-    mantenimiento_ids = fields.(
-        string = '')"""
+
+    #relaciones entre tablas    
+    aparcamiento_id = fields.Many2one(
+        'garaje.apacamiento', 
+        string='Aparcamiento',
+        )
+    mantenimiento_ids = fields.Many2many(
+        'garaje.mantenimiento',
+        string = "Mantenimientos",
+        required = True)
+
 
     @api.depends('construido')
     def _get_annos(self):
@@ -52,7 +62,17 @@ class Mantenimiento(models.Model):
     _order = 'fecha'
 
     fecha = fields.Date('Fecha', required=True, default = fields.date.today())
-    tipo = fields.Selection(string = 'Tipo', selection = [
-        ('l':'Lavar'),('r':'Revision'),('m':'Mecanica'),('p':'Pintura')
-        ], default = 'l')
-    coste = fields.Float(string = 'Coste', (8,2), help = 'Coste total del mantenimiento.')
+    tipo = fields.Selection(
+        string = 'Tipo', 
+        selection = [
+            ("l","Lavar"), ('r','Revision'), ('m','Mecanica'), ('p','Pintura')
+            ], 
+        default = 'l')
+    coste = fields.Float(
+        string = 'Coste', 
+        help = 'Coste total del mantenimiento.')
+
+    #relaciones entre tablas
+    coche_ids = fields.Many2many(
+        'garaje.coche', 
+        string = "Lista de Coches")
