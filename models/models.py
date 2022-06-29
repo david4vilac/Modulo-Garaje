@@ -1,3 +1,4 @@
+from email.policy import default
 from odoo import models, fields, api
 
 class Aparcamiento(models.Model):
@@ -5,7 +6,7 @@ class Aparcamiento(models.Model):
     _description = 'Permite definir las caracteristicas de un aparcamiento.'
 
     name = fields.Char(string = 'Dirección', required = True)
-    plaza = fields.Integer(string = 'Plazas', requiered = True)
+    plazas = fields.Integer(string = 'Plazas', requiered = True)
 
     #relacion entre tablas
     coche_ids = fields.One2many(
@@ -32,7 +33,9 @@ class Coche(models.Model):
         string = 'Consumo', 
         default = 0.0,
         help = 'Consumo promedio cada 100kms')
-    averiado = fields.Boolean(string = '')
+    averiado = fields.Boolean(
+        string = 'Averiado', 
+        default = False)
     annos = fields.Integer(
         string = 'Años', 
         compute  = '_get_annos')
