@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-
+    <data>        
         <!-- VISTAS DE APARCAMIENTO-->
-        <record id="garaje.aparcamiento_list_view" model="ir.iu.view">
+        <record model="ir.ui.view" id="garaje.aparcamiento_list_view">
             <field name="name">garaje.aparcamiento.view.tree</field>
             <field name="model">garaje.aparcamiento</field>
-            <field name="arch" type = "xml"/>
+            <field name="arch" type = "xml">
                 <tree>
                     <field name = "name"/>
                     <field name = "plazas"/>
                 </tree>
             </field>
+        </record>        <!--
+        <record id="garaje.aparcamiento_form_view" model="ir.ui.view">
+            <field name="name">garaje.aparcamiento.view.form</field>
+            <field name="model">garaje.aparcamiento</field>
+            <field name="arch" type = "xml">
+                <form string = "Formulario de Aparcamiento">
+                    <sheet>
+                        <field name="name" placeholder = "Dirección" />
+                        <field name="plazas" placeholder = "Plazas" />
+                    </sheet>
+                </form>
+            </field>
         </record>
-
+-->        
         <!-- VISTAS DE COCHES-->
-        <record id="garaje.coche_list_view" model="ir.iu.view">
+        <record model="ir.ui.view" id="garaje.coche_list_view">
             <field name="name">garaje.coche.view.tree</field>
             <field name="model">garaje.coche</field>
-            <field name="arch" type = "xml"/>
+            <field name="arch" type = "xml">
                 <tree>
                     <field name = "name"/>
                     <field name = "modelo"/>
@@ -27,48 +38,51 @@
                     <field name = "averiado"/>
                 </tree>
             </field>
-        </record>
-
+        </record>        
+        
         <!--VISTAS DE MANTENIMIENTOS-->
-        <record id="garaje.mantenimiento_list_view" model="ir.iu.view">
+        <record model="ir.ui.view" id="garaje.mantenimiento_list_view">
             <field name="name">garaje.mantenimiento.view.tree</field>
             <field name="model">garaje.mantenimiento</field>
-            <field name="arch" type = "xml"/>
+            <field name="arch" type = "xml">
                 <tree>
                     <field name = "fecha"/>
                     <field name = "tipo"/>
                     <field name = "coste"/>
                 </tree>
             </field>
-        </record>
-
-        <!--DEFINICIÓN DE MENÚS-->
-        <!-- acciones-->
+        </record>        
         
+        <!--DEFINICIÓN DE MENÚS-->        
+        
+        <!-- acciones-->
         <record id="garaje.aparcamiento_action_window" model="ir.actions.act_window">
             <field name="name">Aparcamientos</field>
             <field name="res_model">garaje.aparcamiento</field>
-            <field name="view_mode">tree, form</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
         <record id="garaje.coche_action_window" model="ir.actions.act_window">
             <field name="name">Coches</field>
             <field name="res_model">garaje.coche</field>
-            <field name="view_mode">tree, form</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
         <record id="garaje.mantenimiento_action_window" model="ir.actions.act_window">
             <field name="name">Mantenimiento</field>
             <field name="res_model">garaje.mantenimiento</field>
-            <field name="view_mode">tree, form</field>
-        </record>
-
-        <!-- Top menu item -->
-        <menuitem id="garaje" name="garaje.menu_root"/>
+            <field name="view_mode">tree,form</field>
+        </record>       
         
+        <!-- Top menu item -->
+
+        <menuitem name="Garaje" id="garaje.menu_root"/>
         <!-- menu categories -->
-        <menuitem name="Aparcamientos" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.aparcamiento_action_window"/>
-        <menuitem name="Coches" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.coche_action_window"/>
-        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent = "garaje.menu_root" action = "garaje.mantenimiento_action_window"/>
-    </data
+
+        <menuitem name="Aparcamientos" id="garaje.aparcamiento_menu" parent="garaje.menu_root" action="garaje.aparcamiento_action_window"/>
+        <menuitem name="Coches" id="garaje.coche_menu" parent="garaje.menu_root" action="garaje.coche_action_window"/>
+        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent="garaje.menu_root" action="garaje.mantenimiento_action_window"/>
+        
+
+    </data>
 </odoo>
