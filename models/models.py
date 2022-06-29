@@ -65,7 +65,7 @@ class Mantenimiento(models.Model):
     tipo = fields.Selection(
         string = 'Tipo', 
         selection = [
-            ("l","Lavar"), ('r','Revision'), ('m','Mecanica'), ('p','Pintura')
+            ('l','Lavar'), ('r','Revision'), ('m','Mecanica'), ('p','Pintura')
             ], 
         default = 'l')
     coste = fields.Float(
