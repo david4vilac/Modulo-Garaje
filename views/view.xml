@@ -42,18 +42,33 @@
             </field>
         </record>
 
-
-
-
-
-
         <!--DEFINICIÓN DE MENÚS-->
+        <!-- acciones-->
+        
+        <record id="garaje.aparcamiento_action_window" model="ir.actions.act_window">
+            <field name="name">Aparcamientos</field>
+            <field name="res_model">garaje.aparcamiento</field>
+            <field name="view_mode">tree, form</field>
+        </record>
+
+        <record id="garaje.coche_action_window" model="ir.actions.act_window">
+            <field name="name">Coches</field>
+            <field name="res_model">garaje.coche</field>
+            <field name="view_mode">tree, form</field>
+        </record>
+
+        <record id="garaje.mantenimiento_action_window" model="ir.actions.act_window">
+            <field name="name">Mantenimiento</field>
+            <field name="res_model">garaje.mantenimiento</field>
+            <field name="view_mode">tree, form</field>
+        </record>
+
         <!-- Top menu item -->
         <menuitem id="garaje" name="garaje.menu_root"/>
         
         <!-- menu categories -->
-        <menuitem name="Aparcamientos" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.action_window"/>
-        <menuitem name="Coches" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.action_window"/>
-        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent = "garaje.menu_root" action = "garaje.action_window"/>
+        <menuitem name="Aparcamientos" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.aparcamiento_action_window"/>
+        <menuitem name="Coches" id="garaje.aparcamiento_menu" parent = "garaje.menu_root" action = "garaje.coche_action_window"/>
+        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent = "garaje.menu_root" action = "garaje.mantenimiento_action_window"/>
     </data
 </odoo>
