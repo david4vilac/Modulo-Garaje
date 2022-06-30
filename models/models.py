@@ -28,7 +28,7 @@ class Coche(models.Model):
         string = 'Modelo', 
         required = True )
     construido = fields.Date(
-        string = 'Fecha de construcción' )
+        string = 'Fecha de construcción')
     consumo = fields.Float(
         string = 'Consumo', 
         default = 0.0,
