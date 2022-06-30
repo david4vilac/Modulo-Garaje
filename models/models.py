@@ -1,5 +1,7 @@
-from email.policy import default
 from odoo import models, fields, api
+from dateutil.relativedelta import *
+from datetime import date
+
 
 class Aparcamiento(models.Model):
     _name = 'garaje.aparcamiento'
@@ -56,8 +58,11 @@ class Coche(models.Model):
     @api.depends('construido')
     def _get_annos(self):
         for coche in self:
-            coche.annos = 0
+            today = date.today()
+            coche.annos = relativedelta(today, coche.construido).years
 
+    #restricciones con formato de la DB
+    _sql_constraints = [('name_uniq', 'unique(name)', 'La matricula ya existe')]
 
 class Mantenimiento(models.Model):
     _name = 'garaje.mantenimiento'
@@ -79,3 +84,10 @@ class Mantenimiento(models.Model):
     coche_ids = fields.Many2many(
         'garaje.coche', 
         string = "Lista de Coches")
+
+    def name_get(self):
+        resultado = []
+        for mantenimiento in self:
+            description = f'{len(mantenimiento.coche_ids)} coches - {mantenimiento.coste} $'
+            resultado.append((mantenimiento.id, description))
+        return resultado
