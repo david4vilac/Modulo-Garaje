@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_garaje_mantenimiento_usuario,garaje.mantenimiento.usuario,model_garaje_mantenimiento,garaje.group_garaje_usuario,1,1,1,1
+access_garaje_coche_usuario,garaje.coche.usuario,model_garaje_coche,garaje.group_garaje_usuario,1,1,1,1
+access_garaje_aparcamiento_usuario,garaje.aparcamiento.usuario,model_garaje_aparcamiento,garaje.group_garaje_usuario,1,0,0,0
+access_garaje_aparcamiento_director,garaje.aparcamiento.director,model_garaje_aparcamiento,garaje.group_garaje_director,1,1,1,1
