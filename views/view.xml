@@ -55,6 +55,22 @@
             </field>
         </record>
 
+         <!-- VISTAS DE COCHES SEARCH-->
+        <record model="ir.ui.view" id="garaje.coche_search_view">
+            <field name="name">garaje.coche.view.search</field>
+            <field name="model">garaje.coche</field>
+            <field name="arch" type = "xml">
+                <search>
+                    <field name = "modelo"/>
+                    <field name = "construido"/>
+                    <filter name="Averiado" string="Averiado" domain="[('averiado', '=', True)]"/>
+                    <group>
+                        <filter name="group_by_averiado" string="Averiado" context="{'group_by':'averiado'}"/>
+                    </group>
+                </search>
+            </field>
+        </record> 
+
                 <!-- mejora en el formulario -->
         <record id="garaje.coche_form_view" model="ir.ui.view">
             <field name="name">garaje.coche.view.form</field>
@@ -121,7 +137,36 @@
                     </sheet>
                 </form>
             </field>
-        </record>        
+        </record>
+
+                <!--VISTAS DE MANTENIMIENTOS CALENDARIO-->
+        <record model="ir.ui.view" id="garaje.mantenimiento_calendar_view">
+            <field name="name">garaje.mantenimiento.view.calendar</field>
+            <field name="model">garaje.mantenimiento</field>
+            <field name="arch" type = "xml">
+                <calendar string="Calendario de Mantenimiento" date_start="fecha" color="tipo" mode="month">
+                    <field name = "tipo"/>
+                    <field name = "coste"/>
+                </calendar>
+            </field>
+        </record> 
+
+        <!--VISTAS DE MANTENIMIENTOS-->
+        <record model="ir.ui.view" id="garaje.mantenimiento_search_view">
+            <field name="name">garaje.mantenimiento.view.search</field>
+            <field name="model">garaje.mantenimiento</field>
+            <field name="arch" type = "xml">
+                <search>
+                    <field name = "fecha"/>
+                    <field name = "tipo" widget="selection"/>
+                    <group>
+                        <filter name="group_by_tipo" string="Tipo" context="{'group_by': 'tipo'}" />
+                    </group>
+                </search>
+            </field>
+        </record> 
+
+                     
         
         <!--DEFINICIÓN DE MENÚS-->        
         
@@ -135,13 +180,14 @@
         <record id="garaje.mantenimiento_action_window" model="ir.actions.act_window">
             <field name="name">Mantenimiento</field>
             <field name="res_model">garaje.mantenimiento</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
         </record>   
         
         <record id="garaje.coche_action_window" model="ir.actions.act_window">
             <field name="name">Coches</field>
             <field name="res_model">garaje.coche</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_group_by_tipo':False}</field>
         </record>    
         
         <!-- Top menu item -->
@@ -150,8 +196,8 @@
         <!-- menu categories -->
 
         <menuitem name="Aparcamientos" id="garaje.aparcamiento_menu" parent="garaje.menu_root" action="garaje.aparcamiento_action_window"/>
-        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent="garaje.menu_root" action="garaje.mantenimiento_action_window"/>
         <menuitem name="Coches" id="garaje.coche_menu" parent="garaje.menu_root" action="garaje.coche_action_window"/>
+        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent="garaje.menu_root" action="garaje.mantenimiento_action_window"/>
         
 
     </data>
