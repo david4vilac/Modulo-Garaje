@@ -44,7 +44,7 @@ class Coche(models.Model):
 
     #relaciones entre tablas    
     aparcamiento_id = fields.Many2one(
-        'garaje.apacamiento', 
+        'garaje.aparcamiento', 
         string='Aparcamiento',
         )
     mantenimiento_ids = fields.Many2many(
