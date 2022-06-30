@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- VISTAS DE APARCAMIENTO-->
+        <record model="ir.ui.view" id="garaje.aparcamiento_list_view">
+            <field name="name">garaje.aparcamiento.view.tree</field>
+            <field name="model">garaje.aparcamiento</field>
+            <field name="arch" type = "xml">
+                <tree>
+                    <field name = "name"/>
+                    <field name = "plazas"/>
+                </tree>
+            </field>
+        </record>      
+
+                        <!-- mejora en el formulario -->
+        <record id="garaje.aparcamiento_form_view" model="ir.ui.view">
+            <field name="name">garaje.aparcamiento.view.form</field>
+            <field name="model">garaje.aparcamiento</field>
+            <field name="arch" type = "xml">
+                <form string = "Formulario de Aparcamiento">
+                    <sheet>
+                        <div class = "oe_title">
+                            <h1>
+                                <field name="name" placeholder = "Dirección" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <separator string = "Información general"/>
+                                <field name="plazas" placeholder = "Plazas" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="coche_ids"/>
+                        </group>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+    </data>
+    
+
+</odoo>

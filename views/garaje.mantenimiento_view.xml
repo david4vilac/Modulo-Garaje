@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <!--VISTAS DE MANTENIMIENTOS-->
+        <record model="ir.ui.view" id="garaje.mantenimiento_list_view">
+            <field name="name">garaje.mantenimiento.view.tree</field>
+            <field name="model">garaje.mantenimiento</field>
+            <field name="arch" type = "xml">
+                <tree>
+                    <field name = "fecha"/>
+                    <field name = "tipo"/>
+                    <field name = "coste"/>
+                </tree>
+            </field>
+        </record> 
+
+                <!-- mejora en el formulario -->
+        <record id="garaje.mantenimiento_form_view" model="ir.ui.view">
+            <field name="name">garaje.mantenimiento.view.form</field>
+            <field name="model">garaje.mantenimiento</field>
+            <field name="arch" type = "xml">
+                <form string = "Ficha Mantenimiento">
+                    <sheet>
+                        <separator string = "Ficha Mantenimiento"/>
+                        <group>
+                            <group>
+                                <field name="fecha"/>
+                                <field name="tipo"/>
+                            </group>
+                            <group>
+                                <field name="coste"/>
+                                <field name="coche_ids" /> 
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                <!--VISTAS DE MANTENIMIENTOS CALENDARIO-->
+        <record model="ir.ui.view" id="garaje.mantenimiento_calendar_view">
+            <field name="name">garaje.mantenimiento.view.calendar</field>
+            <field name="model">garaje.mantenimiento</field>
+            <field name="arch" type = "xml">
+                <calendar string="Calendario de Mantenimiento" date_start="fecha" color="tipo" mode="month">
+                    <field name = "tipo"/>
+                    <field name = "coste"/>
+                </calendar>
+            </field>
+        </record> 
+
+        <!--VISTAS DE MANTENIMIENTOS-->
+        <record model="ir.ui.view" id="garaje.mantenimiento_search_view">
+            <field name="name">garaje.mantenimiento.view.search</field>
+            <field name="model">garaje.mantenimiento</field>
+            <field name="arch" type = "xml">
+                <search>
+                    <field name = "fecha"/>
+                    <field name = "tipo" widget="selection"/>
+                    <group>
+                        <filter name="group_by_tipo" string="Tipo" context="{'group_by': 'tipo'}" />
+                    </group>
+                </search>
+            </field>
+        </record>   
+    </data>
+</odoo>

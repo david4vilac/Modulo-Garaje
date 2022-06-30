@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!--DEFINICIÓN DE MENÚS-->        
+            <!-- acciones-->
+        <record id="garaje.aparcamiento_action_window" model="ir.actions.act_window">
+            <field name="name">Aparcamientos</field>
+            <field name="res_model">garaje.aparcamiento</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="garaje.mantenimiento_action_window" model="ir.actions.act_window">
+            <field name="name">Mantenimiento</field>
+            <field name="res_model">garaje.mantenimiento</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>   
+        
+        <record id="garaje.coche_action_window" model="ir.actions.act_window">
+            <field name="name">Coches</field>
+            <field name="res_model">garaje.coche</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_group_by_tipo':False}</field>
+        </record>    
+        
+        <!-- Top menu item -->
+        <menuitem name="Garaje" id="garaje.menu_root" web_icon="garaje,static/description/icon.png"/>
+        <!-- menu categories -->
+
+        <menuitem name="Aparcamientos" id="garaje.aparcamiento_menu" parent="garaje.menu_root" action="garaje.aparcamiento_action_window"/>
+        <menuitem name="Coches" id="garaje.coche_menu" parent="garaje.menu_root" action="garaje.coche_action_window"/>
+        <menuitem name="Mantenimiento" id="garaje.mantenimiento_menu" parent="garaje.menu_root" action="garaje.mantenimiento_action_window"/>
+    </data>
+    
+
+</odoo>
+        
+        

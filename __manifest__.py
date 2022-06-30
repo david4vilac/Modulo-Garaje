@@ -6,6 +6,9 @@
     'data': [
         'security/garaje_security.xml',
         'security/ir.model.access.csv',
-        'views/view.xml'
+        'views/garaje.coche_view.xml',
+        'views/garaje.aparcamiento_view.xml',
+        'views/garaje.mantenimiento_view.xml',
+        'views/garaje.menu.xml'
     ]
 }
